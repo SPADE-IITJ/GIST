@@ -1,0 +1,10 @@
+{
+  "calibration_seeds": [
+    100,
+    101,
+    102
+  ],
+  "null_flag_rate_at_threshold": 0.05,
+  "total_threshold": 2.2930927632032687,
+  "warmup_epochs": 100
+}

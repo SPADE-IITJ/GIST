@@ -1,0 +1,18 @@
+{
+  "calibration_seeds": [
+    100,
+    101,
+    102
+  ],
+  "null_flag_rate_at_threshold": 0.05,
+  "probe": {
+    "100": 0.9789653420448303,
+    "200": 0.9801023602485657,
+    "400": 0.981428861618042,
+    "50": 0.9772598147392273
+  },
+  "probe_eval_nodes": 5277,
+  "probe_seed": 100,
+  "total_threshold": 2.212577321416635,
+  "warmup_epochs": 400
+}

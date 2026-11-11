@@ -1,0 +1,100 @@
+python -m experiments.final D5_intro e1_mix --graph arxiv --budgets 2048 8192 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_mix --graph elliptic --budgets 2048 8192 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_mix --graph patents --budgets 2048 8192 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_mix --graph products --budgets 2048 8192 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_mix --graph web-google --budgets 2048 8192 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_mix --graph youtube --budgets 2048 8192 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D6_graphs linkpred audit --model gat --graph facebook --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph gnutella25 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph gnutella30 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph gnutella31 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph hepph --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph hepth --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph patents --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph road-ca --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph road-pa --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph road-tx --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph twitter --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph web-berkstan --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph web-google --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph web-stanford --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gat --graph youtube --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph facebook --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph gnutella25 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph gnutella30 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph gnutella31 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph hepph --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph hepth --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph patents --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph road-ca --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph road-pa --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph road-tx --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph twitter --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph web-berkstan --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph web-google --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph web-stanford --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gcn --graph youtube --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph facebook --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph gnutella25 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph gnutella30 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph gnutella31 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph hepph --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph hepth --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph patents --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph road-ca --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph road-pa --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph road-tx --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph twitter --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph web-berkstan --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph web-google --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph web-stanford --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model gin --graph youtube --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph facebook --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph gnutella25 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph gnutella30 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph gnutella31 --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph hepph --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph hepth --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph patents --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph road-ca --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph road-pa --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph road-tx --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph twitter --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph web-berkstan --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph web-google --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph web-stanford --seeds 0
+python -m experiments.final D6_graphs linkpred audit --model sage --graph youtube --seeds 0
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv --arms baseline full selective_logged --over adaptation.oracle_when=True --tag _oracle --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv --arms baseline full selective_logged selective_topup full_isoroots selective_periodic --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv --arms baseline selective_exact full_exact --tag _exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=100 --tag _k100 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=25 --tag _k25 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=1.742912 --tag _tau10 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=3.863959 --tag _tau1 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv_year --arms baseline full selective_logged selective_topup full_isoroots selective_periodic --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant arxiv_year --arms baseline selective_exact full_exact --tag _exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gat --variant elliptic --arms baseline full selective_logged --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant arxiv --arms baseline full selective_logged --over adaptation.oracle_when=True --tag _oracle --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant arxiv --arms baseline full selective_logged selective_topup full_isoroots selective_periodic selective_exact full_exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=100 --tag _k100 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=25 --tag _k25 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=1.593220 --tag _tau10 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=3.728994 --tag _tau1 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant arxiv_year --arms baseline full selective_logged selective_topup full_isoroots selective_periodic selective_exact full_exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gcn --variant elliptic --arms baseline full selective_logged --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant arxiv --arms baseline full selective_logged --over adaptation.oracle_when=True --tag _oracle --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant arxiv --arms baseline full selective_logged selective_topup full_isoroots selective_periodic selective_exact full_exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=100 --tag _k100 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=25 --tag _k25 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=1.605413 --tag _tau10 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=3.571601 --tag _tau1 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant arxiv_year --arms baseline full selective_logged selective_topup full_isoroots selective_periodic selective_exact full_exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model gin --variant elliptic --arms baseline full selective_logged --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant arxiv --arms baseline full selective_logged --over adaptation.oracle_when=True --tag _oracle --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant arxiv --arms baseline full selective_logged selective_topup full_isoroots selective_periodic selective_exact full_exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=100 --tag _k100 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant arxiv_year --arms baseline full selective_logged --over adaptation.cooldown=25 --tag _k25 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=1.687595 --tag _tau10 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant arxiv_year --arms baseline full selective_logged --over drift.total_threshold_override=3.781223 --tag _tau1 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant arxiv_year --arms baseline full selective_logged selective_topup full_isoroots selective_periodic selective_exact full_exact --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D8_review streams --exp D8 --model sage --variant elliptic --arms baseline full selective_logged --seeds 0 1 2 3 4 5 6 7 8 9

@@ -1,0 +1,60 @@
+# Elliptic Bitcoin transactions: a temporal graph with real drift (added for the C2/C3 pilot in place of Photo).
+#
+# Standalone, like arxiv.yaml: values omitted here fall back to the dataclass defaults in config.py. The stream is the
+# arrival-ordered temporal plan (time step = "year"), so drift_process is unused. Mirrors arxiv.yaml's large-graph
+# operating point (batch 512, fan-out [25, 15], hidden 256, 8 heads) and pins METIS: the base window's graph can fall
+# under the auto threshold, and networkx Louvain on ~60k nodes is far too slow per refresh. warmup_epochs and
+# total_threshold below are placeholders, replaced per model by calibration on seeds 100-102.
+
+data:
+  name: elliptic
+  root: data
+  base_edge_fraction: 0.5
+  train_fraction: 0.6
+
+model:
+  hidden: 256
+  heads: 8
+  lr: 0.005
+  weight_decay: 0.0
+  warmup_epochs: 200
+
+stream:
+  steps: 1000
+  batch_size: 512
+  num_neighbors: [25, 15]
+  sampler_refresh_interval: 20
+
+drift:
+  total_threshold: 2.3
+  community_threshold: 2.11
+  community_selection_k: 1.5
+  gate_uses_community: false
+  community_stride: 1
+  community_mode: global
+  community_refresh_interval: 200
+  community_min_size: 15
+  partitioner: metis
+  num_parts: null
+  partition_target_size: 5000
+
+adaptation:
+  cooldown: 50
+  selective_mode: subgraph
+  background_weight: 0.1
+  max_retrain_nodes: 2048
+  anchor_fraction: 0.25
+  halo_rehearsal: true
+  supervise_halo: true
+  periodic_period: null
+
+runtime:
+  device: auto
+  profile_memory: true
+  sync_stages: false
+
+experiment:
+  seeds: [0, 1, 2, 3, 4]
+  arms: [baseline, periodic, full, selective]
+  out_dir: results
+  tag: elliptic

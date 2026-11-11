@@ -1,0 +1,138 @@
+# GIST - Phase 1 (experimental validity) configuration.
+#
+# Every value the prototype hardcoded now lives here.
+
+data:
+  name: Cora
+  root: data
+  # G_0 holds half the edges; the rest is replayed as the stream.
+  base_edge_fraction: 0.5
+  # Disjoint node split: 60% trainable, 40% holdout-for-metrics.
+  train_fraction: 0.6
+
+model:
+  hidden: 64
+  heads: 4
+  lr: 0.005
+  weight_decay: 0.0
+  warmup_epochs: 5
+
+stream:
+  steps: 2000
+  batch_size: 128
+  num_neighbors: [10, 10]
+  # Steps between NeighborLoader rebuilds. Building a loader constructs a CSC
+  # index of the whole graph (O(E)); the prototype paid that every step, which
+  # is the per-event O(|V|+|E|) cost the proposal claims to avoid.
+  sampler_refresh_interval: 20
+
+# How drift arrives, where it lands, and what it changes.
+#
+# The prototype injected 20 random edges every 200 steps. That is the one
+# schedule a fixed-period retrainer matches perfectly, so it made the paper's
+# central claim - that triggering on drift beats a timer - untestable.
+drift_process:
+  # periodic | poisson | regime.  "regime" is bursty: calm stretches with rare
+  # events alternating with turbulent ones, so a fixed schedule must either
+  # over-retrain through the calm or under-react through the turbulence.
+  mode: regime
+
+  calm_mean_gap: 220.0
+  turbulent_mean_gap: 22.0
+  calm_duration: [250, 550]
+  turbulent_duration: [70, 170]
+
+  poisson_mean_gap: 90.0   # used only by mode: poisson
+  interval: 200            # used only by mode: periodic
+
+  # structural = homophily-breaking edges, feature = covariate shift toward
+  # another class's mean, label = cyclic class remap (true concept change).
+  kinds: [structural, feature, label]
+
+  # "localized" targets whole communities, which is the assumption GIST
+  # is built on. "diffuse" scatters the same number of nodes and is the
+  # control for that assumption.
+  locality: localized
+  affected_fraction: [0.03, 0.08]
+  magnitude: [0.3, 0.8]
+  structural_edges: 40
+  # Partitioner for targeting localized drift (not the detector's own).
+  partitioner: auto
+  partition_target_size: 2000
+
+drift:
+  # D_total = a*z(D_emb) + b*z(D_pred) + c*z(D_att), weights renormalised to 1.
+  weight_embedding: 0.3333333333
+  weight_prediction: 0.3333333333
+  weight_attention: 0.3333333333
+  ema: 0.1
+  warmup: 20
+  # Calibrated by scripts/calibrate.py as the p95 of the observed null
+  # distribution (a 5% marginal flag rate), on held-out seeds 100-102 so the
+  # evaluation seeds 0-4 are never used for tuning. Because the composite is
+  # rescaled to unit variance, total_threshold reads directly in sigmas.
+  # The prototype's tau_c = 2.5 was unreachable: community drift never
+  # exceeded 1.99 in 2400 observed steps, so its selective arm never fired.
+  total_threshold: 2.16
+  # Gate threshold on the *standardised* community batch-max, in sigmas.
+  # A static tau_c cannot work here: calibrated on an inert model it saturates
+  # once retraining begins, because retraining itself shifts embeddings. With
+  # the static value this gate fired on 98% of steps and silently turned
+  # "drift-triggered" retraining into "retrain every cooldown steps".
+  community_threshold: 2.11
+  # A community is selected when its score exceeds the within-batch mean by
+  # this many within-batch standard deviations. Scale-free by construction.
+  community_selection_k: 1.5
+  # False: D_total decides *when* to adapt, community drift decides *where*.
+  gate_uses_community: false
+  community_stride: 1
+
+  # "batch"  = Phase 1 (Louvain per sampled subgraph; ids unstable, ~60-70
+  #            tiny communities, dominated step time).
+  # "global" = Phase 2 (one stable partition of the whole graph, refreshed on
+  #            an interval, community identity carried across refreshes).
+  community_mode: global
+  # Main scaling knob: full-graph Louvain is the most expensive operation in
+  # the pipeline, so this wants to be large on big graphs.
+  community_refresh_interval: 200
+  community_min_size: 15
+  # auto = METIS above ~200k edges, Louvain below. networkx Louvain over
+  # Arxiv's 1.17M edges needs 240-390s per refresh; METIS needs ~3s.
+  partitioner: auto
+  num_parts: null
+  partition_target_size: 2000
+
+runtime:
+  # auto | cpu | cuda. GPU numbers are unverified until this runs on a GPU.
+  device: auto
+  profile_memory: true
+
+adaptation:
+  cooldown: 50
+  # "reweight" reproduces DASS-GNN; "mask" drops non-drifting nodes.
+  # Neither reduces backward cost - that is Phase 2.
+  # subgraph = Phase 2 (exact, cost scales with the drifted region)
+  # reweight/mask = Phase 1 behaviour, full-batch backward pass
+  selective_mode: subgraph
+  background_weight: 0.1
+  # Cap on target nodes drawn from the drifted communities per event. Matched
+  # to the inference batch size so selective and full update comparable node
+  # counts, and the difference is *where* those nodes sit.
+  max_retrain_nodes: 128
+  # Share of each retraining set drawn uniformly from the whole trainable pool
+  # as rehearsal. Pure localization forgets the rest of the graph.
+  anchor_fraction: 0.25
+  # Free rehearsal: also train on nodes the 2-hop expansion already materialised.
+  halo_rehearsal: true
+  # Same free supervision for full/periodic, so the arms differ only in locality.
+  supervise_halo: true
+  # Fixed schedule for the `periodic` control arm. `null` matches the `full`
+  # arm's realised retraining count automatically, per seed, so the control
+  # spends exactly the same budget without a hand-tuned constant.
+  periodic_period: null
+
+experiment:
+  seeds: [0, 1, 2, 3, 4]
+  arms: [baseline, periodic, full, selective]
+  out_dir: results
+  tag: phase1

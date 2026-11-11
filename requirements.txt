@@ -1,0 +1,15 @@
+# Python 3.11. The evaluation used torch 2.5.1 (CUDA 12.1) and torch-geometric 2.8.
+torch>=2.5
+torch-geometric>=2.6
+torch-scatter>=2.1     # wheels from https://data.pyg.org/whl/ matching your torch/CUDA build
+torch-sparse>=0.6.18   # METIS partitioning of the graph regions
+ogb>=1.3.6
+numpy>=1.26
+scipy>=1.11
+pandas>=2.1
+scikit-learn>=1.4
+networkx>=3.2
+PyYAML>=6.0
+matplotlib>=3.8
+# Optional: snapshot-based temporal backbones in the exactness audit (EvolveGCN-O, T-GCN, GConvGRU)
+# torch-geometric-temporal>=0.54

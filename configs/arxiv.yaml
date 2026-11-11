@@ -1,0 +1,109 @@
+# OGBN-Arxiv operating point.
+#
+# Kept separate from default.yaml so the Cora results stay reproducible from
+# the config they were produced with. This file is standalone, not a patch:
+# load_config applies one YAML on top of the dataclass defaults in
+# config.py, it does not layer this over default.yaml. Anything omitted here
+# falls back to the dataclass default, which for every field this file omits
+# is the same value default.yaml sets.
+
+data:
+  name: ogbn-arxiv
+  # Datasets are downloaded to data/ on first use.
+  root: data
+  base_edge_fraction: 0.5
+  train_fraction: 0.6
+
+model:
+  # The Cora-sized model (hidden=64, heads=4) puts an Arxiv retraining step at
+  # ~1 GFLOP - roughly 6 ms against a ~45 ms CPU-side pipeline - so nothing
+  # about the GNN is measurable there. This is the smallest point in
+  # scripts/crossover.py at which the retraining step is a visible share of
+  # step time (~23 ms), which is what makes a timing comparison meaningful.
+  hidden: 256
+  heads: 8
+  lr: 0.005
+  weight_decay: 0.0
+  # Cora's 5 is far too few for Arxiv's 40 classes. Measured holdout accuracy
+  # after warmup, seed 100: 5 epochs 0.314, 20 0.472, 50 0.538, 100 0.569,
+  # 200 0.589, 400 0.586 (plateaued, starting to overfit).
+  #
+  # This is not a tuning nicety. At 5 epochs the model enters the stream at
+  # roughly half the accuracy it can reach, so every arm that takes gradient
+  # steps improves largely by *finishing its initial training*, and that gain
+  # would be read as adaptation to drift. Starting at the plateau is what
+  # makes the arms differ only in how they respond to drift.
+  warmup_epochs: 200
+
+stream:
+  steps: 2000
+  batch_size: 512
+  num_neighbors: [25, 15]
+  sampler_refresh_interval: 20
+
+drift_process:
+  mode: regime
+  calm_mean_gap: 220.0
+  turbulent_mean_gap: 22.0
+  calm_duration: [250, 550]
+  turbulent_duration: [70, 170]
+  kinds: [structural, feature, label]
+  locality: localized
+  affected_fraction: [0.03, 0.08]
+  magnitude: [0.3, 0.8]
+  structural_edges: 40
+  partitioner: auto
+  # k ~ 34 on Arxiv's 169,343 nodes. See scripts/pick_partition_size.py.
+  partition_target_size: 5000
+
+drift:
+  # Re-derived on Arxiv with scripts/calibrate.py over held-out seeds
+  # 100-102 (800 steps each), as the p95 of the observed null distribution
+  # of D_total - a 5% marginal flag rate. Cora's 2.16 is not reused.
+  total_threshold: 2.260
+  # NOT calibrated on Arxiv, and unused at this configuration. With
+  # `gate_uses_community: false` the community score never reaches the gate,
+  # and a calibration run never retrains, so no community is ever scored -
+  # calibrate.py correctly refuses to emit a value rather than reporting the
+  # p95 of an all-zero sample. Inherited from Cora and left inert. Do not
+  # describe it as calibrated for Arxiv, and do not enable the community
+  # gate without re-deriving it.
+  community_threshold: 2.11
+  community_selection_k: 1.5
+  gate_uses_community: false
+  community_stride: 1
+  community_mode: global
+  community_refresh_interval: 200
+  community_min_size: 15
+  partitioner: auto
+  num_parts: null
+  partition_target_size: 5000
+
+adaptation:
+  cooldown: 50
+  selective_mode: subgraph
+  background_weight: 0.1
+  # Matched to stream.batch_size. The two are independent settings, and
+  # leaving this at the default 128 against a 512-node batch would let
+  # selective update a quarter as many roots as full - a budget advantage
+  # that has nothing to do with locality and that would flatter every
+  # cost ratio in the comparison.
+  max_retrain_nodes: 512
+  anchor_fraction: 0.25
+  halo_rehearsal: true
+  supervise_halo: true
+  periodic_period: null
+
+runtime:
+  device: auto
+  profile_memory: true
+  # Off for the headline comparison: per-stage synchronisation serialises
+  # CPU and GPU and inflates end-to-end wall-clock. Turn on only when the
+  # per-stage breakdown is what is being measured.
+  sync_stages: false
+
+experiment:
+  seeds: [0, 1, 2, 3, 4]
+  arms: [baseline, periodic, full, selective]
+  out_dir: results
+  tag: arxiv

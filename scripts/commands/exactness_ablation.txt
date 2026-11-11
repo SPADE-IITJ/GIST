@@ -1,0 +1,10 @@
+python -m experiments.final D9_ablation streams --exp D9 --model gat --variant arxiv --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model gat --variant arxiv_year --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model gcn --variant arxiv --arms baseline selective_exact selective_nofix --tag _nofix --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model gcn --variant arxiv --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model gcn --variant arxiv_year --arms baseline selective_exact selective_nofix --tag _nofix --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model gcn --variant arxiv_year --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model gin --variant arxiv --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model gin --variant arxiv_year --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model sage --variant arxiv --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D9_ablation streams --exp D9 --model sage --variant arxiv_year --arms baseline selective_logged selective_trunc --seeds 0 1 2 3 4 5 6 7 8 9

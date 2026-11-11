@@ -1,0 +1,15 @@
+# datasets and run outputs
+data/
+linkpred/data/
+experiments/results/
+experiments/cache/
+runs/
+# raw results unpacked from results/archives/
+results/D*/raw/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/

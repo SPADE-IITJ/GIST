@@ -1,0 +1,286 @@
+python -m experiments.calibrate probe --model gat --variant products
+python -m experiments.calibrate probe --model gin --variant products
+python -m experiments.calibrate probe --model sage --variant products
+python -m experiments.chain calibrate probe --model gcn --variant products ;; calibrate threshold --model gcn --variant products ;; final D1_main streams --exp D1 --model gcn --variant products --arms baseline full selective periodic random_region iso_full global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.chain calibrate probe --model gin --variant products ;; calibrate threshold --model gin --variant products ;; final D1_main streams --exp D1 --model gin --variant products --arms baseline full selective periodic random_region iso_full global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.chain calibrate probe --model sage --variant products ;; calibrate threshold --model sage --variant products ;; final D1_main streams --exp D1 --model sage --variant products --arms baseline full selective periodic random_region iso_full global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gat --variant arxiv --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gat --variant arxiv_year --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gat --variant cora --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gat --variant elliptic --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gat --variant pubmed --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gcn --variant arxiv --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gcn --variant arxiv_year --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gcn --variant cora --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gcn --variant elliptic --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gcn --variant pubmed --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gin --variant arxiv --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gin --variant arxiv_year --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gin --variant cora --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gin --variant elliptic --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model gin --variant pubmed --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model sage --variant arxiv --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model sage --variant arxiv_year --arms baseline full selective periodic random_region iso_full global_periodic global_trigger roland ergnn ewc twp cat --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model sage --variant cora --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model sage --variant elliptic --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D1_main streams --exp D1 --model sage --variant pubmed --arms baseline full selective periodic random_region iso_full global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9 --audit 3
+python -m experiments.final D2_exact backbones --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 2048 4096 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=gat model.warmup_epochs=200 drift.total_threshold=2.2378250135406765 model.warmup_symmetric=true --out results/D3_speed/raw/gat.json
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 2048 4096 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=gcn model.warmup_epochs=400 drift.total_threshold=2.3641006647804503 model.warmup_symmetric=true --out results/D3_speed/raw/gcn.json
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 2048 4096 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=gin model.warmup_epochs=400 drift.total_threshold=2.3535768472496557 model.warmup_symmetric=true --out results/D3_speed/raw/gin.json
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 2048 4096 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=sage model.warmup_epochs=400 drift.total_threshold=2.3399619868855517 model.warmup_symmetric=true --out results/D3_speed/raw/sage.json
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=gat model.warmup_epochs=200 drift.total_threshold=2.2378250135406765 model.warmup_symmetric=true --out results/D3_speed/raw/gat.json
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=gcn model.warmup_epochs=400 drift.total_threshold=2.3641006647804503 model.warmup_symmetric=true --out results/D3_speed/raw/gcn.json
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=gin model.warmup_epochs=400 drift.total_threshold=2.3535768472496557 model.warmup_symmetric=true --out results/D3_speed/raw/gin.json
+python -m experiments.final D3_speed gate_overhead --seeds 0 1 2 3 4 --budgets 8192 --anchors 0.25 --profile-steps 0 --refresh-lag 20 --set model.backbone=sage model.warmup_epochs=400 drift.total_threshold=2.3399619868855517 model.warmup_symmetric=true --out results/D3_speed/raw/sage.json
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 drift_process.locality=diffuse --tag _N2048_diffuse
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 --tag _N2048
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 drift_process.locality=diffuse --tag _N4096_diffuse
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 --tag _N4096
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 drift_process.locality=diffuse --tag _N8192_diffuse
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 --tag _N8192
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.0 --tag _N2048_rho0
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.5 --tag _N2048_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.0 --tag _N4096_rho0
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.5 --tag _N4096_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.0 --tag _N8192_rho0
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.5 --tag _N8192_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 --tag _N2048
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 --tag _N4096
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 --tag _N8192
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.0 --tag _N2048_rho0
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.5 --tag _N2048_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.0 --tag _N4096_rho0
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.5 --tag _N4096_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.0 --tag _N8192_rho0
+python -m experiments.final D4_budget streams --exp D4 --model gat --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.5 --tag _N8192_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 drift_process.locality=diffuse --tag _N2048_diffuse
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 --tag _N2048
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 drift_process.locality=diffuse --tag _N4096_diffuse
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 --tag _N4096
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 drift_process.locality=diffuse --tag _N8192_diffuse
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 --tag _N8192
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.0 --tag _N2048_rho0
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.5 --tag _N2048_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.0 --tag _N4096_rho0
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.5 --tag _N4096_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.0 --tag _N8192_rho0
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.5 --tag _N8192_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 --tag _N2048
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 --tag _N4096
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms baseline full selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 --tag _N8192
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.0 --tag _N2048_rho0
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=2048 adaptation.full_retrain_nodes=2048 adaptation.anchor_fraction=0.5 --tag _N2048_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.0 --tag _N4096_rho0
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=4096 adaptation.full_retrain_nodes=4096 adaptation.anchor_fraction=0.5 --tag _N4096_rho0.5
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.0 --tag _N8192_rho0
+python -m experiments.final D4_budget streams --exp D4 --model sage --variant arxiv_year --arms selective --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.max_retrain_nodes=8192 adaptation.full_retrain_nodes=8192 adaptation.anchor_fraction=0.5 --tag _N8192_rho0.5
+python -m experiments.final D5_intro e1_census --graph arxiv --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph cora --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph elliptic --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph facebook --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph gnutella25 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph gnutella30 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph gnutella31 --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph hepph --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph hepth --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph patents --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph photo --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph products --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph pubmed --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph road-ca --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph road-pa --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph road-tx --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph twitter --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph web-berkstan --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph web-google --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph web-stanford --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e1_census --graph youtube --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph arxiv --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph arxiv --model gcn --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph arxiv --model gin --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph arxiv --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph patents --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph patents --model gcn --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph patents --model gin --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph patents --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph products --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph products --model gcn --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph products --model gin --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph products --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph web-google --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph web-google --model gcn --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph web-google --model gin --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph web-google --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph youtube --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph youtube --model gcn --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph youtube --model gin --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e3a_cost --graph youtube --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gat --variant arxiv_label --repair-device cuda --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gat --variant cora_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gat --variant pubmed_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gcn --variant arxiv_label --repair-device cuda --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gcn --variant cora_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gcn --variant pubmed_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gin --variant arxiv_label --repair-device cuda --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gin --variant cora_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model gin --variant pubmed_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model sage --variant arxiv_label --repair-device cuda --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model sage --variant cora_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e4_fidelity --model sage --variant pubmed_label --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e5_static coverage --variant arxiv --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e5_static coverage --variant cora --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e5_static halo --variant arxiv --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e5_static halo --variant cora --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro e7_interference --model gat --variant arxiv --seeds 0 1 2 3 4
+python -m experiments.final D5_intro e7_interference --model sage --variant arxiv --seeds 0 1 2 3 4
+python -m experiments.final D5_intro streams --exp E2 --model gat --variant arxiv_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gat --variant cora_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gat --variant pubmed_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gcn --variant arxiv_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gcn --variant cora_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gcn --variant pubmed_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gin --variant arxiv_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gin --variant cora_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model gin --variant pubmed_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model sage --variant arxiv_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model sage --variant cora_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E2 --model sage --variant pubmed_label --arms baseline full selective periodic global_periodic global_trigger --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model gat --variant arxiv_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model gat --variant arxiv_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5halo --model gat --variant cora_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model gat --variant cora_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5halo --model gcn --variant arxiv_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model gcn --variant arxiv_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5halo --model gcn --variant cora_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model gcn --variant cora_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5halo --model gin --variant arxiv_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model gin --variant arxiv_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5halo --model gin --variant cora_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model gin --variant cora_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5halo --model sage --variant arxiv_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model sage --variant arxiv_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5halo --model sage --variant cora_struct --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D5_intro streams --exp E5halo --model sage --variant cora_struct --arms full --seeds 0 1 2 3 4 5 6 7 8 9 --over adaptation.supervise_halo=True --tag _halo
+python -m experiments.final D5_intro streams --exp E5lr --model gat --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.001 adaptation.retrain_lr=0.001 --tag _shared0.001
+python -m experiments.final D5_intro streams --exp E5lr --model gat --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.005 adaptation.retrain_lr=0.005 --tag _shared0.005
+python -m experiments.final D5_intro streams --exp E5lr --model gat --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.01 adaptation.retrain_lr=0.01 --tag _shared0.01
+python -m experiments.final D5_intro streams --exp E5lr --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.001 adaptation.retrain_lr=0.001 --tag _shared0.001
+python -m experiments.final D5_intro streams --exp E5lr --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.005 adaptation.retrain_lr=0.005 --tag _shared0.005
+python -m experiments.final D5_intro streams --exp E5lr --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.01 adaptation.retrain_lr=0.01 --tag _shared0.01
+python -m experiments.final D5_intro streams --exp E5lr --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.001 adaptation.retrain_lr=0.001 --tag _shared0.001
+python -m experiments.final D5_intro streams --exp E5lr --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.005 adaptation.retrain_lr=0.005 --tag _shared0.005
+python -m experiments.final D5_intro streams --exp E5lr --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.01 adaptation.retrain_lr=0.01 --tag _shared0.01
+python -m experiments.final D5_intro streams --exp E5lr --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.001 adaptation.retrain_lr=0.001 --tag _shared0.001
+python -m experiments.final D5_intro streams --exp E5lr --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.005 adaptation.retrain_lr=0.005 --tag _shared0.005
+python -m experiments.final D5_intro streams --exp E5lr --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.01 adaptation.retrain_lr=0.01 --tag _shared0.01
+python -m experiments.final D5_intro streams --exp E5lr --model sage --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.001 adaptation.retrain_lr=0.001 --tag _shared0.001
+python -m experiments.final D5_intro streams --exp E5lr --model sage --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.005 adaptation.retrain_lr=0.005 --tag _shared0.005
+python -m experiments.final D5_intro streams --exp E5lr --model sage --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.01 adaptation.retrain_lr=0.01 --tag _shared0.01
+python -m experiments.final D5_intro streams --exp E5lr --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.001 adaptation.retrain_lr=0.001 --tag _shared0.001
+python -m experiments.final D5_intro streams --exp E5lr --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.005 adaptation.retrain_lr=0.005 --tag _shared0.005
+python -m experiments.final D5_intro streams --exp E5lr --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.lr=0.01 adaptation.retrain_lr=0.01 --tag _shared0.01
+python -m experiments.final D5_intro streams --exp E5sym --model gat --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_symmetric=False --tag _asym
+python -m experiments.final D5_intro streams --exp E5sym --model gcn --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_symmetric=False --tag _asym
+python -m experiments.final D5_intro streams --exp E5sym --model gin --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_symmetric=False --tag _asym
+python -m experiments.final D5_intro streams --exp E5sym --model sage --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_symmetric=False --tag _asym
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=200 --tag _w200
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=50 --tag _w50
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=5 --tag _w5
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=100 --tag _w100
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=10 --tag _w10
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=200 --tag _w200
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=25 --tag _w25
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=50 --tag _w50
+python -m experiments.final D5_intro streams --exp E5w --model gat --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=5 --tag _w5
+python -m experiments.final D5_intro streams --exp E5w --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=100 --tag _w100
+python -m experiments.final D5_intro streams --exp E5w --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=10 --tag _w10
+python -m experiments.final D5_intro streams --exp E5w --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=200 --tag _w200
+python -m experiments.final D5_intro streams --exp E5w --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=25 --tag _w25
+python -m experiments.final D5_intro streams --exp E5w --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=50 --tag _w50
+python -m experiments.final D5_intro streams --exp E5w --model gcn --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=5 --tag _w5
+python -m experiments.final D5_intro streams --exp E5w --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=100 --tag _w100
+python -m experiments.final D5_intro streams --exp E5w --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=10 --tag _w10
+python -m experiments.final D5_intro streams --exp E5w --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=200 --tag _w200
+python -m experiments.final D5_intro streams --exp E5w --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=25 --tag _w25
+python -m experiments.final D5_intro streams --exp E5w --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=50 --tag _w50
+python -m experiments.final D5_intro streams --exp E5w --model gin --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=5 --tag _w5
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=200 --tag _w200
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=50 --tag _w50
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant arxiv_year --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=5 --tag _w5
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=100 --tag _w100
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=10 --tag _w10
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=200 --tag _w200
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=25 --tag _w25
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=50 --tag _w50
+python -m experiments.final D5_intro streams --exp E5w --model sage --variant cora --arms baseline full --seeds 0 1 2 3 4 5 6 7 8 9 --over model.warmup_epochs=5 --tag _w5
+python -m experiments.final D6_graphs linkpred run --model gat --graph facebook --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph gnutella25 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph gnutella30 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph gnutella31 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph hepph --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph hepth --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph patents --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph road-ca --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph road-pa --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph road-tx --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph twitter --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph web-berkstan --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph web-google --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph web-stanford --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gat --graph youtube --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph facebook --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph gnutella25 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph gnutella30 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph gnutella31 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph hepph --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph hepth --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph patents --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph road-ca --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph road-pa --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph road-tx --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph twitter --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph web-berkstan --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph web-google --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph web-stanford --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gcn --graph youtube --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph facebook --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph gnutella25 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph gnutella30 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph gnutella31 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph hepph --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph hepth --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph patents --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph road-ca --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph road-pa --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph road-tx --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph twitter --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph web-berkstan --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph web-google --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph web-stanford --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model gin --graph youtube --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph facebook --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph gnutella25 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph gnutella30 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph gnutella31 --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph hepph --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph hepth --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph patents --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph road-ca --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph road-pa --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph road-tx --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph twitter --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph web-berkstan --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph web-google --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph web-stanford --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D6_graphs linkpred run --model sage --graph youtube --seeds 0 1 2 3 4 5 6 7 8 9 --tag _final --reported
+python -m experiments.final D7_limits limits deep --variant arxiv --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D7_limits limits deep --variant arxiv --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D7_limits limits deep --variant cora --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D7_limits limits deep --variant cora --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D7_limits limits deep --variant pubmed --model gat --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D7_limits limits deep --variant pubmed --model sage --seeds 0 1 2 3 4 5 6 7 8 9
+python -m experiments.final D7_limits limits memory --variant arxiv --model gat --seeds 0 1 2 3 4
+python -m experiments.final D7_limits limits memory --variant arxiv --model sage --seeds 0 1 2 3 4
+python -m experiments.final D7_limits limits memory --variant products --model gat --seeds 0 1 2 3 4
+python -m experiments.final D7_limits limits memory --variant products --model sage --seeds 0 1 2 3 4
